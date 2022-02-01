@@ -1,6 +1,6 @@
 <?php
 
-class Stack
+class Stack extends Sequence
 {
     private ?Node $last;
 
@@ -22,8 +22,8 @@ class Stack
         return $item;
     }
 
-    private function isEmpty(): bool
+    protected function getFirst(): ?Node
     {
-        return $this->last == null;
+        return $this->last;
     }
 }
