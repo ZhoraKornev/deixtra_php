@@ -28,5 +28,6 @@ abstract class Sequence
         }
         return false;
     }
+
     abstract protected function getFirst(): ?Node;
 }

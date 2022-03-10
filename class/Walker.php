@@ -26,16 +26,19 @@ class Walker
         $path = [];
         $stack = new Stack();
         $stack->put($node);
+        show($path,$stack);
         while (!$stack->isEmpty()){
             $curr = $stack->get();
-            $this->path[$curr] = true;
-        }
-        foreach ($this->graph->getEdges($node) as $node2 => $length){
-            if (!$this->path[$node2]){
-                if (!$stack->contains($node2)){
-                    $stack->put($node2);
+            $path[$curr] = true;
+            foreach ($this->graph->getEdges($curr) as $next => $length){
+                if (empty($path[$next])){
+                    if (!$stack->contains($next)){
+                        $stack->put($next);
+                    }
                 }
+                show($path,$stack);
             }
         }
+        return $path;
     }
 }
