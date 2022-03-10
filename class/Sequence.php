@@ -18,5 +18,15 @@ abstract class Sequence
             $curr = $curr->getNext();
         }
     }
+
+    public function contains(string $item): bool
+    {
+        foreach ($this->getList() as $curr) {
+            if ($curr == $item){
+                return true;
+            }
+        }
+        return false;
+    }
     abstract protected function getFirst(): ?Node;
 }
